@@ -2,12 +2,10 @@ import Link from "next/link";
 
 export default function Header() {
   return (
-    <header style={{ padding: "20px", background: "#f0f0f0" }}>
-      <nav style={{ display: "flex", gap: "20px" }}>
-        <Link href="/">Home</Link>
-        <Link href="/home">Go to Home Page</Link>
-        <Link href="/about">About Us</Link>
-      </nav>
-    </header>
+    <nav className="bg-gray-100 p-4 mb-4 flex gap-4">
+      <Link href="/home" className="text-blue-500 hover:underline">Home</Link>
+      <Link href="/about" className="text-blue-500 hover:underline">About</Link>
+      <Link href="/posts" className="text-blue-500 hover:underline">Posts</Link>
+    </nav>
   );
 }
