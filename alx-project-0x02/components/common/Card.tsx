@@ -1,14 +1,8 @@
-import { CardProps } from "../../interfaces";
+import { type CardProps } from "@/interfaces";
 
 export default function Card({ title, content }: CardProps) {
   return (
-    <div style={{
-      border: "1px solid #ddd",
-      padding: "20px",
-      borderRadius: "8px",
-      marginBottom: "15px",
-      background: "#fafafa"
-    }}>
+    <div className="border p-4 rounded mb-4 bg-gray-50">
       <h2>{title}</h2>
       <p>{content}</p>
     </div>

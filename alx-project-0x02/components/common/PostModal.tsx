@@ -1,48 +1,47 @@
 import { useState } from "react";
 
-export default function PostModal({ onClose, onSubmit }: any) {
+interface PostModalProps {
+  onClose: () => void;
+  onSubmit: (data: { title: string; content: string }) => void;
+}
+
+export default function PostModal({ onClose, onSubmit }: PostModalProps) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
-  const handleSubmit = () => {
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
     onSubmit({ title, content });
     onClose();
   };
 
   return (
-    <div style={{
-      position: "fixed", top: 0, left: 0, width: "100%", height: "100%",
-      background: "rgba(0,0,0,0.5)", display: "flex",
-      justifyContent: "center", alignItems: "center"
-    }}>
-      <div style={{
-        background: "#fff", padding: "20px", borderRadius: "8px",
-        width: "300px"
-      }}>
-        <h2>Add New Post</h2>
-
-        <input
-          type="text"
-          placeholder="Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          style={{ width: "100%", marginBottom: "10px", padding: "8px" }}
-        />
-
-        <textarea
-          placeholder="Content"
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          style={{ width: "100%", height: "80px", padding: "8px" }}
-        />
-
-        <button onClick={handleSubmit} style={{ marginTop: "10px" }}>
-          Add Post
-        </button>
-
-        <button onClick={onClose} style={{ marginLeft: "10px", color: "red" }}>
-          Close
-        </button>
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+      <div className="bg-white p-6 rounded w-80">
+        <h2 className="text-lg font-bold mb-4">Add New Post</h2>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            className="w-full mb-2 p-2 border rounded"
+          />
+          <textarea
+            placeholder="Content"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            className="w-full mb-2 p-2 border rounded"
+          />
+          <div className="flex justify-end gap-2">
+            <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded">
+              Add Post
+            </button>
+            <button type="button" onClick={onClose} className="px-4 py-2 bg-red-500 text-white rounded">
+              Close
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );
