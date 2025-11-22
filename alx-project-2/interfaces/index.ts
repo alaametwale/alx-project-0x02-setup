@@ -1,4 +1,4 @@
-export interface BasicInfo {
-  title: string;
-  message: string;
+export interface IUser {
+  name: string;
+  email: string;
 }
