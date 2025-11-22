@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Card from "@/components/common/Card";
 import PostModal from "@/components/common/PostModal";
+import Header from "@/components/layout/Header"; // ✅ استيراد Header
 
 export default function HomePage() {
   const [posts, setPosts] = useState([
@@ -16,6 +17,8 @@ export default function HomePage() {
 
   return (
     <div>
+      <Header /> {/* ✅ استخدام Header */}
+
       <h1>Welcome to the Home Page</h1>
 
       <button
