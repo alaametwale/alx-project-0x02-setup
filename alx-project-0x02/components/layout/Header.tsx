@@ -1,7 +1,13 @@
+import Link from "next/link";
+
 export default function Header() {
   return (
-    <header className="w-full p-4 bg-gray-800 text-white text-center">
-      <h1 className="text-xl font-semibold">Welcome to ALX Project 0x02</h1>
+    <header style={{ padding: "20px", background: "#f0f0f0" }}>
+      <nav style={{ display: "flex", gap: "20px" }}>
+        <Link href="/">Home</Link>
+        <Link href="/home">Go to Home Page</Link>
+        <Link href="/about">About Us</Link>
+      </nav>
     </header>
   );
 }
